@@ -18,8 +18,12 @@ server.on("request", function(request, response) {
 
         response.write("中文可以嗎？")
         response.end()
+        if (request.url == "/login") {
+            console.log("收到登入請求")
+            response.end("登入請求")
+        }
     })
     // 4.啟動server 設定端口號
-server.listen(3000, function() {
-    console.log("伺服器已經啟用成功了，可以通過 http://127.0.1:300/ 來訪問")
+server.listen(80, function() {
+    console.log("伺服器已經啟用成功了，可以通過 http://127.0.0.1/ 來訪問")
 })

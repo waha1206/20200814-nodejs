@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <p>大家好，我叫：{{ name }}</p>
+    <p>我今年 {{ age }} 歲</p>
+    <h1>我來自 {{ province }}</h1>
+    <p>我喜歡： {{ each hobbies }} {{ $value }} {{ /each }}</p>
+</body>
+<script>
+    var foo = '{{ title }}'
+    console.log(foo)
+</script>
+
+</html>
