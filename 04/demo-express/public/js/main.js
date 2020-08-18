@@ -1,1 +1,1 @@
-aliert("我跟你說")
+window.alert('你好，Node.js')
