@@ -15,6 +15,13 @@ app.use('/public/', express.static('./public/'))
 //http://expressjs.com/en/resources/middleware/body-parser.html
 // 一定要在 app.user(router) 掛載路由之前
 //裝好之後，req.body 可以使用  body 的屬性會在安裝完 body-parser 後出現
+var bodyParser = require('body-parser')
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 app.use(router)
 
