@@ -95,5 +95,19 @@ router.get("/material/edit", function(req, res) {
 })
 
 //刪除原料資料
+router.get('/material/delete', function(req, res) {
+    console.log(req.query.id)
+
+    Material.deleteById(req.query.id, function(err) {
+        if (err) {
+            res.send('Server error.')
+        }
+        // 轉導向 302 到 下面的網址，因為這網址有使用到 Material.find 可以把所有資料撈出來，就不用再寫了
+        res.redirect("/material");
+    })
+
+})
+
+
 
 module.exports = router;

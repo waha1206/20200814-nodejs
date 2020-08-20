@@ -118,6 +118,34 @@ exports.findById = function(id, callback) {
 /**
  * 刪除學生資料
  */
-exports.delete = function() {
+exports.deleteById = function(id, callback) {
+    fs.readFile(dbPath, 'utf8', function(err, data) {
+        if (err) {
+            return callback(err)
+        }
+        var materialObj = JSON.parse(data).material
 
+        // findIndex 方法專門用來根據條件查找元素的下標
+        var deleteId = materialObj.findIndex(function(item) {
+                return item.id === parseInt(id)
+            })
+            // 從數組中刪除 參數1 的 下標 (透過 findIndex 找到 下標 0 1 2 3 4 順序會找到)
+            // 參數2 從下標處要刪除幾個數組中的元素
+        materialObj.splice(deleteId, 1)
+
+        console.log('============================')
+        console.log(id)
+        console.log(deleteId)
+            // console.log(materialObj)
+
+        var fileData = JSON.stringify({
+            material: materialObj
+        })
+        fs.writeFile(dbPath, fileData, function(err) {
+            if (err) {
+                return callback(err)
+            }
+            callback(null)
+        })
+    })
 }
